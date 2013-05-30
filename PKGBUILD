@@ -4,7 +4,7 @@
 
 pkgname=mutter
 pkgver=3.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME"
 arch=(i686 x86_64)
 license=('GPL')
@@ -23,6 +23,10 @@ build() {
       --libexecdir=/usr/lib/mutter \
       --localstatedir=/var --disable-static \
       --disable-schemas-compile --enable-compile-warnings=minimum
+
+  #https://bugzilla.gnome.org/show_bug.cgi?id=655517
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
   make
 }
 

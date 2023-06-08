@@ -20,6 +20,7 @@ depends=(
   gnome-settings-daemon
   graphene
   gsettings-desktop-schemas
+  iio-sensor-proxy
   lcms2
   libcanberra
   libgudev

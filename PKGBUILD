@@ -7,7 +7,7 @@ pkgname=(
   mutter
   mutter-docs
 )
-pkgver=45.0
+pkgver=45.0+r49+g8d3d8b86e5
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -53,7 +53,7 @@ checkdepends=(
   wireplumber
   zenity
 )
-_commit=4f6c91847088d7d6476b88575b3a6601b819b443  # tags/45.0^0
+_commit=8d3d8b86e517c97accf11eb243078faf31dd72bb  # main
 source=(
   "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 )

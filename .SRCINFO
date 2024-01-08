@@ -1,6 +1,6 @@
 pkgbase = mutter
 	pkgdesc = Window manager and compositor for GNOME
-	pkgver = 45.2
+	pkgver = 45.3
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = mutter
 	depends = pipewire
 	depends = startup-notification
 	depends = xorg-xwayland
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=08de409d40a92f8bf74ee8005b382aa194d76a45
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=5012d22cb96ba22c4133e2e488ea1f5241fb50e2
 	b2sums = SKIP
 
 pkgname = mutter

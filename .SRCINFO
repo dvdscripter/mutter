@@ -1,10 +1,10 @@
 pkgbase = mutter
 	pkgdesc = Window manager and compositor for GNOME
-	pkgver = 45.3
+	pkgver = 45.4
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	checkdepends = gnome-session
 	checkdepends = python-dbusmock
 	checkdepends = wireplumber
@@ -39,7 +39,7 @@ pkgbase = mutter
 	depends = pipewire
 	depends = startup-notification
 	depends = xorg-xwayland
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=5012d22cb96ba22c4133e2e488ea1f5241fb50e2
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=919e71b113cc03c0fe1de7777393a19947f7b9f9
 	b2sums = SKIP
 
 pkgname = mutter

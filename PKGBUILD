@@ -8,7 +8,7 @@ pkgname=(
   mutter-docs
 )
 pkgver=45.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Window manager and compositor for GNOME"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -56,6 +56,7 @@ checkdepends=(
 _commit=919e71b113cc03c0fe1de7777393a19947f7b9f9  # tags/45.4^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
+  "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3143.patch"
 )
 b2sums=('SKIP')
 
@@ -66,6 +67,7 @@ pkgver() {
 
 prepare() {
   cd mutter
+  patch --forward --strip=1 --input="${srcdir}/3143.patch"
 }
 
 build() {
@@ -123,3 +125,7 @@ package_mutter-docs() {
 }
 
 # vim:set sw=2 sts=-1 et:
+b2sums=('SKIP'
+        '882f4ec5372ab39e76c04556d5191f435139088095424efbdeb25002464c5fba9c5a130079d5f173a94e89872d1ac7188f02bb7d9dc2bc5cb86648366e71cace')
+b2sums=('SKIP'
+        '882f4ec5372ab39e76c04556d5191f435139088095424efbdeb25002464c5fba9c5a130079d5f173a94e89872d1ac7188f02bb7d9dc2bc5cb86648366e71cace')

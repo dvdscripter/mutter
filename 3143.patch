@@ -1,0 +1,36 @@
+From 62396eefd43ecb0c5fde6de5e8ec7d5e77874bea Mon Sep 17 00:00:00 2001
+From: Marcus Behel <marcus.behel@mindspring.com>
+Date: Fri, 28 Jul 2023 11:15:38 -0400
+Subject: [PATCH] backend/x11: Only call keymap_changed for new devices
+
+The x11 backend only calls keymap_changed when the device
+triggering a XkbNewKeyboardNotify is first connected.
+This prevents it from being called when switching between
+multiple keyboard input devices (which can include mouse
+buttons). This is a workaround to issue #398, but does
+not address any underlying issues with XIGrabKeycode.
+
+Fixes #398
+---
+ src/backends/x11/meta-backend-x11.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/backends/x11/meta-backend-x11.c b/src/backends/x11/meta-backend-x11.c
+index 55afe4a7e69..7a35c93bc65 100644
+--- a/src/backends/x11/meta-backend-x11.c
++++ b/src/backends/x11/meta-backend-x11.c
+@@ -390,6 +390,11 @@ handle_host_xevent (MetaBackend *backend,
+           switch (xkb_ev->any.xkb_type)
+             {
+             case XkbNewKeyboardNotify:
++              XkbNewKeyboardNotifyEvent *xkb_nkb_ev = (XkbNewKeyboardNotifyEvent*)(xkb_ev);
++              if(xkb_nkb_ev->req_major == 0 && xkb_nkb_ev->req_minor == 0){
++                keymap_changed (backend);
++              }
++              break;
+             case XkbMapNotify:
+               keymap_changed (backend);
+               break;
+-- 
+GitLab
+
